@@ -9,7 +9,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    publicPath: '/public/'
+    publicPath: '/public/',
+    historyApiFallback: true
   },
   resolve: {
     extensions: ['.js', '.json']
@@ -22,6 +23,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
+        include: path.resolve(__dirname, 'js'),
         test: /\.js$/,
         loader: 'babel-loader'
       },
