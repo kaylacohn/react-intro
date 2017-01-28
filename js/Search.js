@@ -1,5 +1,4 @@
 import React from 'react'
-import preload from '../public/data.json'
 import ShowCard from './ShowCard'
 
 const Search = React.createClass({
@@ -19,7 +18,7 @@ const Search = React.createClass({
           <input type="text" placeholder = "Search" value = { this.state.searchTerm } onChange = { this.handleSearchTermChange } />
         </header>
         <div>
-          { preload.shows
+          { this.props.shows
             .filter((show) => {
               return `${ show.title } ${ show.description }`.
               toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0
