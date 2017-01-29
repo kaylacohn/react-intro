@@ -1,7 +1,15 @@
 import React from 'react'
 import ShowCard from './ShowCard'
+import Header from  './Header'
+const { arrayOf, shape, string } = React.PropTypes
 
 const Search = React.createClass({
+  propTypes: {
+    shows: arrayOf(shape({
+      title: string,
+      description: string
+    }))
+  },
   getInitialState() {
     return {
       searchTerm: ''
@@ -13,10 +21,10 @@ const Search = React.createClass({
   render() {
     return (
       <div className="search">
-        <header>
-          <h1>VidFlix</h1>
-          <input type="text" placeholder = "Search" value = { this.state.searchTerm } onChange = { this.handleSearchTermChange } />
-        </header>
+        <Header showSearch
+                searchTerm= { this.state.searchTerm }
+                handleSearchTermChange= { this.handleSearchTermChange }
+        />
         <div>
           { this.props.shows
             .filter((show) => {
